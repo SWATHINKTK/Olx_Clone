@@ -1,0 +1,47 @@
+.banner{
+    width: 100%;
+    background-color: rgba(0, 47, 52, 0.03);
+}
+
+.banner-container{
+    max-width: 1200px;
+    display: flex;
+}
+    
+
+.banner-heading{
+    color: #002f34;
+    max-width: 370px;
+    max-height:150px;
+    border-right: 1px solid #002f34;
+    margin-top: 15px;
+}
+
+.banner-heading h1{
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.banner-heading h3{
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 15px;
+}
+
+.download-section{
+    padding:35px 20px;
+}
+
+.download-section h4{
+   font-weight: 700;
+   font-size: 14px;
+}
+
+.download-links img{
+    width: 128px;
+    height: 40px;
+    margin-right: 14px;
+    margin-top: 16px;
+}

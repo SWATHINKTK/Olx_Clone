@@ -1,0 +1,59 @@
+.footer{
+    min-height: 48px;
+    width: 100%;
+}
+
+.footer_first{
+    background-color: rgba(235, 238, 239, 1);
+}
+
+.footer-links-div{
+    max-width: 1200px;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link-heading{
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.social-media-icon{
+    display: flex;
+    font-size: 20px;
+}
+
+ul{
+    margin: 8px 0 0;
+}
+
+li{
+    font-weight: 400;
+    text-transform: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: rgba(0, 47, 52, 0.64);
+    color: rgba(0, 47, 52, 1);
+}
+
+
+
+.download-links{
+    display: flex;
+}
+
+.footer_end{
+    background-color: rgba(0,47,52,1);
+    padding: 16px 0;
+
+}
+
+.footer_copyright{
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 13.5px;
+}

@@ -1,0 +1,35 @@
+.form-div{
+    border: 1px solid rgba(158, 158, 158, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-top: 15px;
+}
+
+.input-field{
+    border: 1.6px solid #002f34;
+    border-radius: 5px;
+    color: rgba(0,47,52,1);
+    font-size: 16px;
+    height: 45px;
+    width: 55%;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 12px;
+}
+
+textarea{
+    border: 1.6px solid #002f34;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.submit-btn{
+    background-color:#002f34 ;
+    color: #fff;
+    margin-top: 15px;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 4px 19px;
+    border-radius: 5px;
+}
