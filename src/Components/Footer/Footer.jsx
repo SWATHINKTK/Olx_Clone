@@ -43,7 +43,7 @@ function Footer(){
                         </ul>
                     </div>
                     <div className="link-end-section h-100 ">
-                        <h6 className='link-heading'>Follows</h6>
+                        <h6 className='link-heading'>FOLLOWS</h6>
                         <div className='social-media-icon'>
                             <TiSocialFacebook className="mr-2"/>
                             <PiInstagramLogoBold className="mr-2"/>

@@ -4,10 +4,29 @@ import Sell from "../../assets/Sell";
 import { IoIosSearch } from "react-icons/io";
 import { TiPlus } from "react-icons/ti";
 import './header.css';
+import { useContext } from "react";
+import { AuthContext, FirebaseContext } from "../../Store/Context";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Header(){
+
+    const { user } = useContext(AuthContext);
+    const { auth } = useContext(FirebaseContext);
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        signOut(auth)
+            .then(() => {
+                navigate('/');
+                setUser();
+            })
+    }
+
     return(
         <>
             <div className='header '>
@@ -35,15 +54,16 @@ function Header(){
                             <Arrow/>
                         </div>
                         <div className="login-sts">
-                            <a href="#">Login</a>
+                            { user ? <a href="#" onClick={(e) => handleLogout(e)}>Logout</a> : <a href="#" onClick={() => navigate('/login')}>Login</a>  }
                         </div>
                         <div className="sell-btn-section">
-                            <button>
+                           <button onClick={() => user ? navigate('/newAd') : navigate('/login')}>
                                 <div className="flex items-center">
                                     <TiPlus/> 
                                     <span>SELL</span>
                                 </div>
                             </button>
+                            
                         </div>
                     </div>
                 </div>

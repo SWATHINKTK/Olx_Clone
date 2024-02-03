@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import './signup.css';
-import FirebaseContext from '../../Store/FirebaseContext';
+import { FirebaseContext } from '../../Store/Context';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
@@ -58,7 +58,6 @@ function Signup() {
         if(!hasError){
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    console.log(userCredential)
                     addDoc(collection(db, "users"),{
                         id:userCredential.user.uid,
                         username,

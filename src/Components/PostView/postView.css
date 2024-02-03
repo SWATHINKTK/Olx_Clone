@@ -22,17 +22,77 @@
 }
 
 .details-div-left{
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .details-div-left h1{
     font-weight: 700;
-    font-size: 18px;
+    font-size: 19px;
     color: rgba(0, 47, 52, 1);
+}
+
+.details{
+    color: #406367;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-size: 14.8px;
+    line-height: 25px;
 }
 
 .right-product-detail, .right-user-detail{
     border: 1px solid rgba(158, 158, 158, 0.9);
     border-radius: 3px;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+}
+
+
+
+.product-description{
+    word-break: break-word;
+    margin: 0;
+    color: rgba(0, 47, 52, 1);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+.avatar-img{
+    max-width: 68px;
+}
+
+.chat-open-btn{
+    width: 100%;
+    border: 2px solid rgba(0, 47, 52, 1);
+    padding: 0 9px;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 48px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.price-tag{
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+.posted-heading{
+    margin: 0 0 15px;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(0, 47, 52, 1);
+
+}
+
+.posted-location{
+    color: #406367;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-size: 14.8px;
+    line-height: 25px;
 }
