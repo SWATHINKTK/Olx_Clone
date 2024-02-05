@@ -48,12 +48,13 @@
 
 
 
-.product-description{
-    word-break: break-word;
+.view-ad-description{
+    word-break:break-all;
     margin: 0;
-    color: rgba(0, 47, 52, 1);
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 15px;
+    color: rgba(0, 47, 52, 0.64);
+    font-weight: 400;
+    line-height: 0;
 }
 
 
@@ -88,11 +89,9 @@
 
 }
 
-.posted-location{
-    color: #406367;
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-    font-size: 14.8px;
-    line-height: 25px;
+.location-details{
+    color: rgba(0, 47, 52, 0.64);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
 }
