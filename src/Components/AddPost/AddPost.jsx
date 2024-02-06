@@ -30,7 +30,6 @@ function AddPost(){
     const navigate = useNavigate();
 
     const showToast = () => {
-        console.log('ssss')
         toast.success('Successfully added.', {
                 position: "top-center",
                 autoClose: 3000,

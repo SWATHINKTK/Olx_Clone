@@ -4,6 +4,8 @@ import { FirebaseContext } from '../../Store/Context';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast, Bounce, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
     console.log('Signup rendered')
@@ -19,6 +21,20 @@ function Signup() {
 
     const { auth, db } = useContext(FirebaseContext);
     const navigate = useNavigate();
+
+    const showToast = (message) => {
+        toast.error(message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Zoom,
+            });
+      };
     
     const handleRegister = (e) => {
         e.preventDefault();
@@ -29,6 +45,9 @@ function Signup() {
         setPasswordError('');
 
         let hasError = false;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phnNumRegex = /^[6-9]\d{9}$/;
+
 
         if(username.trim() === ''){
             setUsernameError('*username is required.');
@@ -40,8 +59,8 @@ function Signup() {
             hasError = true;
         }
 
-        if(phnNumber.trim() === ''){
-            setPhnNumberError('*phone number is required.');
+        if(!phnNumRegex.test(phnNumber)){
+            setPhnNumberError('*phone number is not valid.');
             hasError = true;
         }
 
@@ -50,8 +69,18 @@ function Signup() {
             hasError = true;
         }
 
+        if(!emailRegex.test(email)){
+            setEmailError('*email is follows the format.');
+            hasError = true;
+        }
+
         if(password.trim() === ''){
             setPasswordError('*password is required.');
+            hasError = true;
+        }
+
+        if(password.length < 6){
+            setPasswordError('*password must be 6 characters.');
             hasError = true;
         }
 
@@ -72,6 +101,10 @@ function Signup() {
                     console.log(error);
                     console.log(error.code);
                     console.log(error.message);
+                    switch(error.code){
+                        case 'auth/email-already-in-use' : 
+                            return showToast('email is already used.')
+                    }
                 })
         }
 
@@ -82,6 +115,7 @@ function Signup() {
 
     return (
         <div className='signup mx-auto md:mt-16 mt-9'>
+            <ToastContainer/>
             <div className='login-image-section'>
                 <img className='mx-auto' src="../../public/images/loginEntryPointPost.webp" alt="" />
                 <h5 className='text-center mt-2'>Helps us become one of the safest places to buy an sell</h5>
@@ -92,9 +126,9 @@ function Signup() {
                     {usernameError && <p className='text-red-500 ml-2 leading-none'>{usernameError}</p>}
                     <input className='input-login mt-3' type="text" placeholder='Enter Phone Number' value={phnNumber} onChange={(e) => setPhnNumber(e.target.value)} />
                     {phnNumberError && <p className='text-red-500 ml-2 leading-none'>{phnNumberError}</p>}
-                    <input className='input-login mt-3' type="text" placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input className='input-login mt-3' type="email" placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                     {emailError && <p className='text-red-500 ml-2 leading-none'>{emailError}</p>}
-                    <input className='input-login mt-3' type="text" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input className='input-login mt-3' type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
                     {passwordError && <p className='text-red-500 ml-2 leading-none'>{passwordError}</p>}
                     <button className='login-btn mx-auto mt-5'>Register</button>
                 </form>
