@@ -1,3 +1,4 @@
+import React, {memo} from "react";
 import { TiSocialFacebook } from "react-icons/ti";
 import { PiInstagramLogoBold } from "react-icons/pi";
 import { TiSocialTwitter } from "react-icons/ti";
@@ -5,6 +6,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import './footer.css';
 
 function Footer(){
+    console.log('footer rendered')
     return(
         <footer className="footer">
             <div className='footer_first'>
@@ -71,4 +73,4 @@ function Footer(){
     )
 }
 
-export default Footer;
+export default memo(Footer);

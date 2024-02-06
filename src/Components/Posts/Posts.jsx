@@ -7,10 +7,12 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../Config/firebaseConfig';
 
 function Posts(){
+    console.log('Post Section rendered')
 
     const [products , setProduct] = useState([]);
     const navigate = useNavigate();
     const {setPostDetails} = useContext(PostContext);
+    
 
     useEffect(() => {
         getDocs(collection(db, "products"))
@@ -22,9 +24,7 @@ function Posts(){
     },[]);
 
     const timestampToDateString = (timestamp) => {
-        console.log(timestamp)
         const date = timestamp.toDate();
-        console.log('fdd',date)
         return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
     }
 
@@ -33,6 +33,7 @@ function Posts(){
     return(
         <>
             <div className="mx-auto max-w-screen-xl p-8">
+                <h1 className='text-2xl'>Fresh recommendations</h1>
                 <div className='flex w-[100%] items-center flex-wrap '>
                     {
                          products && products.map((product) => (

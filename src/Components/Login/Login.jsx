@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FirebaseContext } from '../../Store/Context';
 
 function Login(){
+    console.log('Login rendered')
 
     const navigate = useNavigate();
     const {auth} = useContext(FirebaseContext);

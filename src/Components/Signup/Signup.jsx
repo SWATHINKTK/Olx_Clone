@@ -6,6 +6,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+    console.log('Signup rendered')
 
     const [username, setUsername] = useState('');
     const [phnNumber, setPhnNumber] = useState('');
@@ -63,9 +64,14 @@ function Signup() {
                         username,
                         phoneNumber:phnNumber,
                     })
-                    .then(() => {
-                        navigate('/login');
-                    })
+                })
+                .then(() => {
+                    navigate('/login');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    console.log(error.code);
+                    console.log(error.message);
                 })
         }
 

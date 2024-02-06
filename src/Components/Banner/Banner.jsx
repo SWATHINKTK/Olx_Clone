@@ -1,6 +1,8 @@
+import React, {memo} from 'react';
 import './banner.css';
 
 function Banner(){
+    console.log('Banner section rendered')
     return(
         <div className="banner">
             <div className="banner-container mx-auto">
@@ -23,4 +25,4 @@ function Banner(){
     )
 }
 
-export default Banner;
+export default memo(Banner);

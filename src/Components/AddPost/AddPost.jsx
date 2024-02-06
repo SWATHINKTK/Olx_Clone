@@ -6,6 +6,8 @@ import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import { AuthContext } from '../../Store/Context.jsx';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast, Bounce, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddPost(){
 
@@ -27,13 +29,28 @@ function AddPost(){
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const showToast = () => {
+        console.log('ssss')
+        toast.success('Successfully added.', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Zoom,
+            });
+      };
+
     const handlePost = (e) => {
         e.preventDefault();
 
         let hasError = false;
 
         setBrandNameError('');
-        setAdTitle('');
+        setAdTitleError('');
         setDescriptionError('');
         setPriceError('');
         setFileError('');
@@ -76,18 +93,32 @@ function AddPost(){
                                         return await getDownloadURL(storageRef);
                                     })
         
-            Promise.all(promises).then((data) => {
-                addDoc(collection(db, "products"), {
-                    id:user.uid,
-                    brand:brandName,
-                    title:adTitle,
-                    description,
-                    price,
-                    images:data,
-                    location,
-                    createdAt:new Date()
-                }).then(() => navigate('/'))
-            })
+            Promise.all(promises)
+                .then((data) => {
+                    addDoc(collection(db, "products"), {
+                        id:user.uid,
+                        brand:brandName,
+                        title:adTitle,
+                        description,
+                        price,
+                        images:data,
+                        location,
+                        createdAt:new Date()
+                    })
+                })
+                .then(() =>{
+                    showToast();
+                    setTimeout(() => {
+                        setBrandName('');
+                        setAdTitle('');
+                        setDescription('');
+                        setPrice('');
+                        setFile('');
+                        setLocation('');
+                        navigate('/');
+                    }, 3000);
+                })
+            
         }
 
     }
@@ -137,6 +168,7 @@ function AddPost(){
                     <button className='submit-btn'>POST</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     )
 }

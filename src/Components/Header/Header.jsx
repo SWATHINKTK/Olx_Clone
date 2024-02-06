@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function Header(){
+    console.log('Header Rendered');
 
     const { user } = useContext(AuthContext);
     const { auth } = useContext(FirebaseContext);
