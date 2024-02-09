@@ -4,6 +4,8 @@ import { PostContext } from '../../Store/ViewPost';
 import ProductDetails from '../../Pages/ProductDetails';
 import { RiArrowRightSLine } from "react-icons/ri";
 import { FiShare2 } from "react-icons/fi";
+import { getDocs, collection } from 'firebase/firestore';
+import { db } from '../../Config/firebaseConfig';
 
 function PostView(){
     console.log('Post view rendered')
@@ -13,7 +15,6 @@ function PostView(){
     const [imageFullView, setImageFullView] = useState(images[0]);
 
     const timestampToDateString = useMemo(() => {
-        console.log('timestamp')
         const date = postDetails.createdAt.toDate();
         return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
     },[])

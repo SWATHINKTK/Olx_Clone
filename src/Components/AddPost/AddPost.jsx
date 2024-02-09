@@ -117,6 +117,9 @@ function AddPost(){
                         navigate('/');
                     }, 3000);
                 })
+                .catch((error) => {
+                    console.log(error);
+                })
             
         }
 

@@ -9,8 +9,6 @@ import './index.css';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from './Store/Context';
 import ProductDetails from './Pages/ProductDetails';
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
 
 function App() {
 

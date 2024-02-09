@@ -23,7 +23,7 @@ function Header(){
 
         signOut(auth)
             .then(() => {
-                navigate('/');
+                navigate('/',{replace:true});
                 setUser();
             })
     }
@@ -55,7 +55,7 @@ function Header(){
                             <Arrow/>
                         </div>
                         <div className="login-sts">
-                            { user ? <a href="#" onClick={(e) => handleLogout(e)}>Logout</a> : <a href="#" onClick={() => navigate('/login')}>Login</a>  }
+                            { user ? <a href="#" onClick={(e) => handleLogout(e)}>Logout</a> : <a href="#" onClick={() => navigate('/login',{ replace:true })}>Login</a>  }
                         </div>
                         <div className="sell-btn-section">
                            <button onClick={() => user ? navigate('/newAd') : navigate('/login')}>

@@ -64,7 +64,7 @@ function Login(){
         if(!hasError){
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    navigate('/ ')
+                    navigate('/ ', { replace: true })
                 })
                 .catch((error) => {
                     switch(error.code){
